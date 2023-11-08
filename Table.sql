@@ -1,4 +1,4 @@
-﻿CREATE DATABASE PM_Ban_Laptop
+CREATE DATABASE PM_Ban_Laptop
 GO
 
 USE PM_Ban_Laptop
