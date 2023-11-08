@@ -306,7 +306,7 @@ CREATE TABLE LS_NhanVien(
 	LichSuLamViec NVARCHAR(100) NOT NULL
 )
 GO
-a
+ab
 
 
 
