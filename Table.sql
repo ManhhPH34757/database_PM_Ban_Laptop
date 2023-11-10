@@ -16,6 +16,8 @@ CREATE TABLE NhanVien(
 )
 GO
 
+SELECT * FROM dbo.NhanVien WHERE HoTen LIKE ? OR SoDienThoai LIKE ?
+
 CREATE TABLE TaiKhoan(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) ON DELETE CASCADE ON UPDATE CASCADE UNIQUE NOT NULL,
@@ -32,10 +34,11 @@ CREATE TABLE KhachHang(
 	NgaySinh DATE NOT NULL,
 	GioiTinh BIT NOT NULL,
 	Email VARCHAR(100) NOT NULL,
-	DiaChi NVARCHAR(255) NOT NULL,
-	PhieuGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.PhieuGiamGia(MaPG)
+	DiaChi NVARCHAR(255) NOT NULL
 )
 GO
+
+SELECT * FROM dbo.KhachHang WHERE HoTen LIKE ? OR sdt LIKE ?
 
 
 CREATE TABLE NhaCungCap(
@@ -193,6 +196,7 @@ CREATE TABLE PhieuGiamGia(
 )
 GO
 
+
 CREATE TABLE DotGiamGia(
 	MaDG VARCHAR(20) PRIMARY KEY,
 	TenDG NVARCHAR(50) NOT NULL,
@@ -223,11 +227,15 @@ CREATE TABLE DonHang(
 	HinhThucThanhToan INT FOREIGN KEY REFERENCES dbo.HinhThucThanhToan(ID) NOT NULL,
 	PhieuGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.PhieuGiamGia(MaPG) NULL,
 	DotGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.DotGiamGia(MaDG) NULL,
-	XacNhan BIT NOT NULL,
+	XacNhan NVARCHAR(30) NOT NULL,
 	TrangThai BIT NOT NULL,
 	TongTien FLOAT NOT NULL
 )
-GO 
+GO
+
+INSERT dbo.DonHang(MaDH,MaKH,HinhThucVanChuyen,HinhThucThanhToan,PhieuGiamGia,DotGiamGia,XacNhan,TrangThai,TongTien)
+
+ 
 
 CREATE TABLE CTDonHang(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -235,6 +243,11 @@ CREATE TABLE CTDonHang(
 	SerialNumber VARCHAR(30) FOREIGN KEY REFERENCES dbo.LaptopNhap(SerialNumber) ON DELETE CASCADE NOT NULL
 )
 GO 
+INSERT dbo.CTDonHang(MaDH,SerialNumber)VALUES(   ?,?  )
+UPDATE dbo.CTDonHang SET SerialNumber = ? WHERE MaDH = ?
+DELETE FROM dbo.DonHang WHERE MaDH = ?
+
+
 
 CREATE TABLE HoaDon(
 	MaHD VARCHAR(20) PRIMARY KEY,
@@ -327,7 +340,41 @@ CREATE TABLE LS_NhanVien(
 )
 GO
 
+-- đơn hàng , đơn hàng chi tiết, ls đơn hàng, phiếu đổi, ls phiếu đổi
 
+INSERT dbo.NhanVien
+(
+    MaNV,
+    HoTen,
+    SoDienThoai,
+    NgaySinh,
+    GioiTinh,
+    Email,
+    Hinh,
+    DiaChi
+)
+VALUES
+(   'NV001',        -- MaNV - varchar(20)
+    N'Nguyễn Thị Hương Giang',       -- HoTen - nvarchar(50)
+    '0369584462',        -- SoDienThoai - varchar(13)
+    '2004-08-08', -- NgaySinh - date
+    0,      -- GioiTinh - bit
+    'giangchan08082004@gmial.com',        -- Email - varchar(100)
+    'Khong',        -- Hinh - varchar(255)
+    N'113 đan khê - di trạch - hoài đức'        -- DiaChi - nvarchar(255)
+    );
 
-
+	INSERT dbo.TaiKhoan
+	(
+	    MaNV,
+	    TenDangNhap,
+	    MatKhau,
+	    VaiTro
+	)
+	VALUES
+	(   'NV001',  -- MaNV - varchar(20)
+	    'GiangChan',  -- TenDangNhap - varchar(100)
+	    'giang123',  -- MatKhau - varchar(100)
+	    1 -- VaiTro - bit
+	    );
 
