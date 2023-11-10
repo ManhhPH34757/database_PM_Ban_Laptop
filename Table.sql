@@ -299,3 +299,16 @@ CREATE TABLE LS_NhanVien(
 	LichSuLamViec NVARCHAR(100) NOT NULL
 )
 GO
+insert into TaiKhoan values ('NV001','ninh30','123456',0)
+insert into NhanVien values ('NV001',N'Hồ Chí Nhật Ninh','0399716258','2004-01-30',1,'ninhnhat2451@gmail','khong co',N'Nghệ An')
+select * from NhanVien
+insert into PhieuGiamGia values('GG001',N'Giảm 20%','2023-11-29',120,2000000,23000000)
+insert into PhieuGiamGia values('GG002',N'Giảm 30%','2023-11-10',100,3000000,23000000)
+Update PhieuGiamGia 
+set TenPhieu = N'Giảm 40%',
+    Han = '2023-12-01',
+	SoLuong = 90,
+	GiaGiam = 4000000,
+	DieuKienHoaDon = 23000000 
+	where MaPG = 'GG001'
+	select * from PhieuGiamGia
