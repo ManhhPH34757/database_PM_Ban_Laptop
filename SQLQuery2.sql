@@ -186,32 +186,32 @@ VALUES
 GO
 
 -- Insert into Serial
-INSERT INTO Serial(ID_BienThe, SerialNumber)
+INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
 VALUES
-(1, 'SN01'),
-(2, 'SN02'),
-(3, 'SN03'),
-(4, 'SN04'),
-(5, 'SN05'),
-(6, 'SN06'),
-(7, 'SN07'),
-(8, 'SN08'),
-(9, 'SN09'),
-(10, 'SN10');
+(1, 'SN01',1),
+(2, 'SN02',0),
+(3, 'SN03',1),
+(4, 'SN04',0),
+(5, 'SN05',1),
+(6, 'SN06',1),
+(7, 'SN07',1),
+(8, 'SN08',1),
+(9, 'SN09',1),
+(10, 'SN10',1);
 GO
 
-INSERT INTO Serial(ID_BienThe, SerialNumber)
+INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
 VALUES
-(11, 'SN21'),
-(22, 'SN22'),
-(23, 'SN13'),
-(24, 'SN24'),
-(25, 'SN25'),
-(26, 'SN26'),
-(27, 'SN27'),
-(28, 'SN28'),
-(29, 'SN29'),
-(20, 'SN30');
+(11, 'SN32',1),
+(22, 'SN22',0),
+(23, 'SN13',1),
+(24, 'SN24',1),
+(25, 'SN25',1),
+(26, 'SN26',1),
+(27, 'SN27',1),
+(28, 'SN28',1),
+(29, 'SN29',1),
+(20, 'SN31',1);
 GO
 
 -- Insert into BienThe
