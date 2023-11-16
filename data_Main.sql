@@ -349,3 +349,17 @@ CREATE TABLE LS_NhanVien(
 GO
 */
 
+insert into PhieuGiamGia values('GG001',N'Chào đông','2023-12-20',122,2000000,23000000)
+insert into PhieuGiamGia values('GG002',N'Chào đông','2023-12-20',122,2000000,23000000)
+insert into PhieuGiamGia values('GG003',N'Chào đông','2023-12-20',122,2000000,23000000)
+insert into PhieuGiamGia values('GG004',N'Chào đông','2023-12-20',122,2000000,23000000)
+insert into PhieuGiamGia values('GG005',N'Chào đông','2023-12-20',122,2000000,23000000)
+select * from PhieuGiamGia
+update  PhieuGiamGia set Han='2022-08-19' where MaPG='GG001'
+select	* from PhieuGiamGia where TenPhieu like N'%Chào Hè%' or MaPG like '%MaPG%'
+select * from PhieuGiamGia where Han>(SELECT CAST(SYSDATETIME() AS DATE) AS CurrentDate) --còn hạn
+select * from PhieuGiamGia where Han<(SELECT CAST(SYSDATETIME() AS DATE) AS CurrentDate) --hết hạn
+SELECT SYSDATETIME() AS CurrentDateTime;
+
+-- Get current date only with higher precision
+SELECT CAST(SYSDATETIME() AS DATE) AS CurrentDate;
