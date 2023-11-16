@@ -1,4 +1,4 @@
-﻿USE PM_Ban_Laptop
+USE PM_Ban_Laptop
 GO
 
 -- Insert into Hang
@@ -30,6 +30,21 @@ VALUES
 ('MD09', 5, 'ROG'),
 ('MD10', 5, 'ZenBook');
 GO
+
+INSERT INTO DongLaptop(MaDong, Hang, TenDong)
+VALUES
+('DL01', 6, 'Series 1'),
+('DL02', 6, 'Series 2'),
+('DL03', 7, 'Surface Laptop 4'),
+('DL04', 7, 'Surface Laptop 5'),
+('DL05', 8, 'Vaio S VJS132X0511S'),
+('DL06', 9, 'Galaxy Book3 Pro'),
+('DL07', 9, 'Galaxy Book3 Ultra'),
+('DL08', 10, 'Gram Style'),
+('DL09', 10, 'Gram SuperSlim'),
+('DL10', 7, 'Surface Pro 9');
+GO
+
 
 -- Continue with the rest of the tables...
 -- Insert into PhanLoai
@@ -203,7 +218,6 @@ GO
 INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
 VALUES
 (11, 'SN32',1),
-(11, 'SN21',1),
 (22, 'SN22',0),
 (23, 'SN13',1),
 (24, 'SN24',1),
@@ -214,7 +228,7 @@ VALUES
 (29, 'SN29',1),
 (20, 'SN31',1);
 GO
-SELECT * FROM dbo.Serial
+
 -- Insert into BienThe
 INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
 VALUES
@@ -240,84 +254,18 @@ VALUES
 (10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url');
 GO
 
-SELECT * FROM dbo.BienThe
-
-SELECT dbo.Laptop.MaLaptop, TenLaptop, PhanLoai.TenLoai, Hang.TenHang, dbo.DongLaptop.TenDong, NamSanXuat FROM dbo.Laptop JOIN dbo.DongLaptop ON DongLaptop.ID = Laptop.DongLaptop JOIN dbo.Hang ON Hang.ID = DongLaptop.Hang JOIN dbo.PhanLoai ON PhanLoai.ID = Laptop.PhanLoai
-
-
 SELECT MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, COUNT(serialNumber) AS [Số lượng] FROM BienThe LEFT JOIN Serial ON BienThe.ID = Serial.ID_BienThe
 GROUP BY MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan 
 GO
+SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE TenHang = 'Dell'
+SELECT Laptop.ID, MaLaptop, TenLaptop, PhanLoai.ID AS PhanLoai, PhanLoai.Tenloai, Hang.ID AS Hang, Hang.TenHang, DongLaptop.ID AS DongLaptop, DongLaptop.TenDong, NamSanXuat  FROM Laptop JOIN PhanLoai ON Laptop.PhanLoai = PhanLoai.ID JOIN DongLaptop ON Laptop.DongLaptop = DongLaptop.ID JOIN Hang ON Hang.ID = DongLaptop.Hang
+SELECT * FROM RAM
 
-SELECT dbo.BienThe.MaBienThe, dbo.Laptop.MaLaptop, (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU) AS [CPU], (dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB') AS [RAM], (dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai) AS [Màn hình], (dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang) AS [GPU], (N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB') AS [Ổ cứng], MauSac, (dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)') AS [Hệ điều hành], GiaVon, GiaBan, COUNT(SerialNumber) AS [Số lượng]  FROM dbo.BienThe JOIN dbo.Laptop ON Laptop.ID = BienThe.ID_Laptop LEFT JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CPU ON CPU.ID = BienThe.CPU JOIN dbo.RAM ON RAM.ID = BienThe.RAM JOIN dbo.ManHinh ON ManHinh.ID = BienThe.ManHinh JOIN dbo.GPU ON GPU.ID = BienThe.GPU JOIN dbo.OCung ON OCung.ID = BienThe.OCung JOIN dbo.HeDieuHanh ON HeDieuHanh.ID = BienThe.HeDieuHanh WHERE dbo.Laptop.MaLaptop = 'ML01'
-GROUP BY (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU),
-         (dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB'),
-         (dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai ),
-         (dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang),
-         (N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB'),
-         (dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)'),
-         MaBienThe,
-         MaLaptop,
-         MauSac,
-         GiaVon,
-         GiaBan
+SELECT * FROM dbo.Laptop
+SELECT * FROM dbo.MoTa
+SELECT * FROM dbo.BienThe
 
-GO
-SELECT dbo.Laptop.MaLaptop, SoLuongLoa, Keyboard, TouchPad, CongKetNoi, Wifi, Bluetooth, Webcam, SoLuongQuat, TrongLuong, Pin FROM dbo.MoTa JOIN dbo.Laptop ON Laptop.ID = MoTa.MaLaptop WHERE dbo.Laptop.MaLaptop = 
-    (SELECT ROW_NUMBER() OVER (ORDER BY dbo.BienThe.MaBienThe) AS rownum,  dbo.BienThe.MaBienThe, dbo.Laptop.MaLaptop, (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU) AS [CPU], (dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB') AS [RAM], (dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai) AS [Màn hình], (dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang) AS [GPU], (N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB') AS [Ổ cứng], MauSac, (dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)') AS [Hệ điều hành], GiaVon, GiaBan, COUNT(SerialNumber) AS [Số lượng]  FROM dbo.BienThe JOIN dbo.Laptop ON Laptop.ID = BienThe.ID_Laptop LEFT JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CPU ON CPU.ID = BienThe.CPU JOIN dbo.RAM ON RAM.ID = BienThe.RAM JOIN dbo.ManHinh ON ManHinh.ID = BienThe.ManHinh JOIN dbo.GPU ON GPU.ID = BienThe.GPU JOIN dbo.OCung ON OCung.ID = BienThe.OCung JOIN dbo.HeDieuHanh ON HeDieuHanh.ID = BienThe.HeDieuHanh
-GROUP BY (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU),
-         (dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB'),
-         (dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai ),
-         (dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang),
-         (N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB'),
-         (dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)'),
-         MaBienThe,
-         MaLaptop,
-         MauSac,
-         GiaVon,
-         GiaBan)
-    AS temp
-    WHERE rownum BETWEEN 11 AND 20
-
-SELECT dbo.BienThe.MaBienThe, dbo.Laptop.MaLaptop, (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU) AS [CPU], (dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB') AS [RAM], (dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai) AS [Màn hình], (dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang) AS [GPU], (N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB') AS [Ổ cứng], MauSac, (dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)') AS [Hệ điều hành], GiaVon, GiaBan, COUNT(SerialNumber) AS [Số lượng]  FROM dbo.BienThe JOIN dbo.Laptop ON Laptop.ID = BienThe.ID_Laptop LEFT JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CPU ON CPU.ID = BienThe.CPU JOIN dbo.RAM ON RAM.ID = BienThe.RAM JOIN dbo.ManHinh ON ManHinh.ID = BienThe.ManHinh JOIN dbo.GPU ON GPU.ID = BienThe.GPU JOIN dbo.OCung ON OCung.ID = BienThe.OCung JOIN dbo.HeDieuHanh ON HeDieuHanh.ID = BienThe.HeDieuHanh
-				WHERE TrangThai = 0 GROUP BY (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU),(dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB'),(dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai ),(dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang),(N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB'),(dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)'),MaBienThe,MaLaptop,MauSac, GiaVon,GiaBan;
-			
-SELECT dbo.Laptop.MaLaptop, TenLaptop, PhanLoai.TenLoai, Hang.TenHang, dbo.DongLaptop.TenDong, NamSanXuat FROM dbo.Laptop JOIN dbo.DongLaptop ON DongLaptop.ID = Laptop.DongLaptop JOIN dbo.Hang ON Hang.ID = DongLaptop.Hang JOIN dbo.PhanLoai ON PhanLoai.ID = Laptop.PhanLoai WHERE dbo.Hang.TenHang LIKE '%%' AND dbo.DongLaptop.TenDong LIKE '%%' AND dbo.PhanLoai.TenLoai LIKE '%%'
-
-SELECT dbo.BienThe.MaBienThe, dbo.Laptop.MaLaptop, (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU) AS [CPU], (dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB') AS [RAM], (dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai) AS [Màn hình], (dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang) AS [GPU], (N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB') AS [Ổ cứng], MauSac, (dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)') AS [Hệ điều hành], GiaVon, GiaBan, COUNT(SerialNumber) AS [Số lượng]  FROM dbo.BienThe JOIN dbo.Laptop ON Laptop.ID = BienThe.ID_Laptop LEFT JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CPU ON CPU.ID = BienThe.CPU JOIN dbo.RAM ON RAM.ID = BienThe.RAM JOIN dbo.ManHinh ON ManHinh.ID = BienThe.ManHinh JOIN dbo.GPU ON GPU.ID = BienThe.GPU JOIN dbo.OCung ON OCung.ID = BienThe.OCung JOIN dbo.HeDieuHanh ON HeDieuHanh.ID = BienThe.HeDieuHanh WHERE dbo.Laptop.MaLaptop = ? GROUP BY (dbo.CPU.hangCPU + ' ' + dbo.CPU.loaiCPU),(dbo.RAM.loaiRAM + ' - ' + CAST(dbo.RAM.dungLuong AS VARCHAR(10)) + 'GB'),(dbo.ManHinh.congNgheManHinh + ' - ' + CAST(dbo.ManHinh.kichThuocManHinh AS VARCHAR(10)) + ' - ' + dbo.ManHinh.doPhanGiai ),(dbo.GPU.loaiCard + ' - ' + dbo.GPU.hang),(N'Ổ ' + dbo.OCung.kieuOCung + ' - ' + CAST(dbo.OCung.dungLuong AS VARCHAR(10)) + ' GB'),(dbo.HeDieuHanh.os + ' ' + dbo.HeDieuHanh.versions + ' ' + CAST(dbo.HeDieuHanh.kieu AS VARCHAR(10)) + '(bit)'),MaBienThe,MaLaptop,MauSac, GiaVon,GiaBan";
-GO
-
-UPDATE BienThe SET GiaVon = 8000000, GiaBan = 9000000 WHERE ID = 1;
-UPDATE BienThe SET GiaVon = 9000000, GiaBan = 10000000 WHERE ID = 2;
-UPDATE BienThe SET GiaVon = 10000000, GiaBan = 11000000 WHERE ID = 3;
-UPDATE BienThe SET GiaVon = 11000000, GiaBan = 12000000 WHERE ID = 4;
-UPDATE BienThe SET GiaVon = 12000000, GiaBan = 13000000 WHERE ID = 5;
-UPDATE BienThe SET GiaVon = 13000000, GiaBan = 14000000 WHERE ID = 6;
-UPDATE BienThe SET GiaVon = 14000000, GiaBan = 15000000 WHERE ID = 7;
-UPDATE BienThe SET GiaVon = 15000000, GiaBan = 16000000 WHERE ID = 8;
-UPDATE BienThe SET GiaVon = 16000000, GiaBan = 17000000 WHERE ID = 9;
-UPDATE BienThe SET GiaVon = 17000000, GiaBan = 18000000 WHERE ID = 10;
-UPDATE BienThe SET GiaVon = 18000000, GiaBan = 19000000 WHERE ID = 11;
-UPDATE BienThe SET GiaVon = 19000000, GiaBan = 20000000 WHERE ID = 12;
-UPDATE BienThe SET GiaVon = 20000000, GiaBan = 21000000 WHERE ID = 13;
-UPDATE BienThe SET GiaVon = 21000000, GiaBan = 22000000 WHERE ID = 14;
-UPDATE BienThe SET GiaVon = 22000000, GiaBan = 23000000 WHERE ID = 15;
-UPDATE BienThe SET GiaVon = 23000000, GiaBan = 24000000 WHERE ID = 16;
-UPDATE BienThe SET GiaVon = 24000000, GiaBan = 25000000 WHERE ID = 17;
-UPDATE BienThe SET GiaVon = 25000000, GiaBan = 26000000 WHERE ID = 18;
-UPDATE BienThe SET GiaVon = 26000000, GiaBan = 27000000 WHERE ID = 19;
-UPDATE BienThe SET GiaVon = 27000000, GiaBan = 28000000 WHERE ID = 20;
-UPDATE BienThe SET GiaVon = 28000000, GiaBan = 29000000 WHERE ID = 21;
-UPDATE BienThe SET GiaVon = 29000000, GiaBan = 30000000 WHERE ID = 22;
-UPDATE BienThe SET GiaVon = 30000000, GiaBan = 31000000 WHERE ID = 23;
-UPDATE BienThe SET GiaVon = 31000000, GiaBan = 32000000 WHERE ID = 24;
-UPDATE BienThe SET GiaVon = 32000000, GiaBan = 33000000 WHERE ID = 25;
-UPDATE BienThe SET GiaVon = 33000000, GiaBan = 34000000 WHERE ID = 26;
-UPDATE BienThe SET GiaVon = 34000000, GiaBan = 35000000 WHERE ID = 27;
-UPDATE BienThe SET GiaVon = 35000000, GiaBan = 36000000 WHERE ID = 28;
-UPDATE BienThe SET GiaVon = 36000000, GiaBan = 37000000 WHERE ID = 29;
-UPDATE BienThe SET GiaVon = 37000000, GiaBan = 38000000 WHERE ID = 30;
-
+	SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE dbo.DongLaptop.ID = 1
 
 /*
 SELECT * FROM BienTheSELECT
