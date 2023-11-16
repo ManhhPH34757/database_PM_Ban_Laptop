@@ -327,46 +327,6 @@ BEGIN
 	END
 END
 GO
-<<<<<<< HEAD
 
-CREATE TABLE LS_DotGiamGia(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
 
-CREATE TABLE LS_PhieuDoi(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
 
-CREATE TABLE LS_NhanVien(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-*/
-
-insert into PhieuGiamGia values('GG001',N'Chào đông','2023-12-20',122,2000000,23000000)
-insert into PhieuGiamGia values('GG002',N'Chào đông','2023-12-20',122,2000000,23000000)
-insert into PhieuGiamGia values('GG003',N'Chào đông','2023-12-20',122,2000000,23000000)
-insert into PhieuGiamGia values('GG004',N'Chào đông','2023-12-20',122,2000000,23000000)
-insert into PhieuGiamGia values('GG005',N'Chào đông','2023-12-20',122,2000000,23000000)
-select * from PhieuGiamGia
-update  PhieuGiamGia set Han='2022-08-19' where MaPG='GG001'
-select	* from PhieuGiamGia where TenPhieu like N'%Chào Hè%' or MaPG like '%MaPG%'
-select * from PhieuGiamGia where Han>(SELECT CAST(SYSDATETIME() AS DATE) AS CurrentDate) --còn hạn
-select * from PhieuGiamGia where Han<(SELECT CAST(SYSDATETIME() AS DATE) AS CurrentDate) --hết hạn
-SELECT SYSDATETIME() AS CurrentDateTime;
-
--- Get current date only with higher precision
-SELECT CAST(SYSDATETIME() AS DATE) AS CurrentDate;
-=======
->>>>>>> 97b7ebf133a229fbe7d252d8da9bb2858b25796a
