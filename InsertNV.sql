@@ -76,27 +76,6 @@ VALUES
     0 -- VaiTro - bit
     )
 GO
-INSERT INTO dbo.NhanVien
-(
-    MaNV,
-    HoTen,
-    SoDienThoai,
-    NgaySinh,
-    GioiTinh,
-    Email,
-    Hinh,
-    DiaChi
-)
-VALUES
-(   'NV004',        -- MaNV - varchar(20)
-    N'Trần Thị Mỹ Duyên',       -- HoTen - nvarchar(50)
-    '0979093601',        -- SoDienThoai - varchar(13)
-    '2000-02-19', -- NgaySinh - date
-    0,      -- GioiTinh - bit
-    'duyen123@gmail.com',        -- Email - varchar(100)
-    'anh.jpg',        -- Hinh - varchar(255)
-    N'Thắng Sơn'        -- DiaChi - nvarchar(255)
-    )
 /*
 SELECT NhanVien.MaNV, HoTen, SoDienThoai, NgaySinh, GioiTinh, Email, Hinh, DiaChi, TenDangNhap, MatKhau, VaiTro FROM dbo.NhanVien JOIN dbo.TaiKhoan ON TaiKhoan.MaNV = NhanVien.MaNV
 GO*/

@@ -1,4 +1,4 @@
-﻿USE PM_Ban_Laptop
+USE PM_Ban_Laptop
 GO
 
 -- Insert into Hang
@@ -30,6 +30,21 @@ VALUES
 ('MD09', 5, 'ROG'),
 ('MD10', 5, 'ZenBook');
 GO
+
+INSERT INTO DongLaptop(MaDong, Hang, TenDong)
+VALUES
+('DL01', 6, 'Series 1'),
+('DL02', 6, 'Series 2'),
+('DL03', 7, 'Surface Laptop 4'),
+('DL04', 7, 'Surface Laptop 5'),
+('DL05', 8, 'Vaio S VJS132X0511S'),
+('DL06', 9, 'Galaxy Book3 Pro'),
+('DL07', 9, 'Galaxy Book3 Ultra'),
+('DL08', 10, 'Gram Style'),
+('DL09', 10, 'Gram SuperSlim'),
+('DL10', 7, 'Surface Pro 9');
+GO
+
 
 -- Continue with the rest of the tables...
 -- Insert into PhanLoai
@@ -138,3 +153,142 @@ VALUES
 ('MHDH09', 'Linux', 'Ubuntu', 64),
 ('MHDH10', 'Linux', 'Fedora', 64);
 GO
+
+-- Insert into Laptop
+INSERT INTO Laptop(MaLaptop, TenLaptop, PhanLoai, DongLaptop, NamSanXuat)
+VALUES
+('ML01', 'Dell Inspiron 15 3000', 1, 1, 2020),
+('ML02', 'HP Pavilion 15', 1, 3, 2020),
+('ML03', 'Lenovo ThinkPad X1 Carbon', 2, 5, 2021),
+('ML04', 'Apple MacBook Air', 6, 7, 2021),
+('ML05', 'Asus ROG Strix G15', 1, 9, 2022),
+('ML06', 'Acer Aspire 5', 4, 6, 2022),
+('ML07', 'Microsoft Surface Laptop 4', 6, 7, 2022),
+('ML08', 'Sony VAIO SX14', 6, 8, 2023),
+('ML09', 'Samsung Galaxy Book Pro 360', 7, 9, 2023),
+('ML10', 'LG Gram 17', 6, 10, 2023);
+GO
+
+-- Insert into MoTa
+INSERT INTO MoTa(MaLaptop, SoLuongLoa, Keyboard, TouchPad, CongKetNoi, Wifi, Bluetooth, Webcam, SoLuongQuat, TrongLuong, Pin)
+VALUES
+(1, 2, 'Standard', 'Multi-touch', 'HDMI, USB 3.1, USB-C', 'Wi-Fi 5', 'Bluetooth 5.0', '720p', 1, 1.83, '3-cell'),
+(2, 2, 'Backlit', 'Multi-touch', 'HDMI, USB 3.1, USB-C', 'Wi-Fi 5', 'Bluetooth 5.0', '720p', 1, 1.85, '3-cell'),
+(3, 2, 'Backlit', 'Multi-touch', 'HDMI, USB 3.1, USB-C', 'Wi-Fi 6', 'Bluetooth 5.1', '720p', 1, 1.09, '4-cell'),
+(4, 2, 'Backlit', 'Force Touch', '2x Thunderbolt 3', 'Wi-Fi 5', 'Bluetooth 5.0', '720p', 0, 1.29, 'Built-in'),
+(5, 2, 'RGB Backlit', 'Multi-touch', 'HDMI, USB 3.2, USB-C', 'Wi-Fi 6', 'Bluetooth 5.1', '720p', 2, 2.30, '4-cell'),
+(6, 2, 'Backlit', 'Multi-touch', 'HDMI, USB 3.1, USB-C', 'Wi-Fi 6', 'Bluetooth 5.0', '720p', 1, 1.90, '3-cell'),
+(7, 2, 'Backlit', 'Multi-touch', 'USB-C', 'Wi-Fi 6', 'Bluetooth 5.0', '720p', 0, 1.26, 'Built-in'),
+(8, 2, 'Backlit', 'Multi-touch', 'HDMI, USB 3.1, USB-C', 'Wi-Fi 6', 'Bluetooth 5.1', '720p', 1, 1.05, '4-cell'),
+(9, 2, 'Backlit', 'Multi-touch', 'HDMI, USB 3.2, USB-C', 'Wi-Fi 6', 'Bluetooth 5.1', '720p', 1, 1.04, 'Built-in'),
+(10, 2, 'Backlit', 'Multi-touch', 'HDMI, USB 3.1, USB-C', 'Wi-Fi 6', 'Bluetooth 5.1', '720p', 1, 1.35, '2-cell');
+GO
+
+-- Continue with the rest of the tables...
+-- Insert into BienThe
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+VALUES
+(1, 'MBT01', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
+(2, 'MBT02', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
+(3, 'MBT03', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
+(4, 'MBT04', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
+(5, 'MBT05', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
+(6, 'MBT06', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
+(7, 'MBT07', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
+(8, 'MBT08', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
+(9, 'MBT09', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
+(10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url');
+GO
+
+-- Insert into Serial
+INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
+VALUES
+(1, 'SN01',1),
+(2, 'SN02',0),
+(3, 'SN03',1),
+(4, 'SN04',0),
+(5, 'SN05',1),
+(6, 'SN06',1),
+(7, 'SN07',1),
+(8, 'SN08',1),
+(9, 'SN09',1),
+(10, 'SN10',1);
+GO
+
+INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
+VALUES
+(11, 'SN32',1),
+(22, 'SN22',0),
+(23, 'SN13',1),
+(24, 'SN24',1),
+(25, 'SN25',1),
+(26, 'SN26',1),
+(27, 'SN27',1),
+(28, 'SN28',1),
+(29, 'SN29',1),
+(20, 'SN31',1);
+GO
+
+-- Insert into BienThe
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+VALUES
+(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
+(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
+(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
+(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
+(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
+(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
+(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
+(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
+(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
+(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
+(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
+(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
+(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
+(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
+(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
+(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
+(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
+(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
+(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
+(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url');
+GO
+
+SELECT MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, COUNT(serialNumber) AS [Số lượng] FROM BienThe LEFT JOIN Serial ON BienThe.ID = Serial.ID_BienThe
+GROUP BY MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan 
+GO
+SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE TenHang = 'Dell'
+SELECT Laptop.ID, MaLaptop, TenLaptop, PhanLoai.ID AS PhanLoai, PhanLoai.Tenloai, Hang.ID AS Hang, Hang.TenHang, DongLaptop.ID AS DongLaptop, DongLaptop.TenDong, NamSanXuat  FROM Laptop JOIN PhanLoai ON Laptop.PhanLoai = PhanLoai.ID JOIN DongLaptop ON Laptop.DongLaptop = DongLaptop.ID JOIN Hang ON Hang.ID = DongLaptop.Hang
+SELECT * FROM RAM
+
+SELECT * FROM dbo.Laptop
+SELECT * FROM dbo.MoTa
+SELECT * FROM dbo.BienThe
+
+	SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE dbo.DongLaptop.ID = 1
+
+/*
+SELECT * FROM BienTheSELECT
+    Laptop.MaLaptop,
+    Laptop.TenLaptop,
+    Hang.TenHang AS Hang,
+    ThongSoKyThuat.RAM,
+    ThongSoKyThuat.CPU,
+    ThongSoKyThuat.OCung,
+    COUNT(LaptopNhap.SerialNumber) AS [SoLuong],
+    ThongSoKyThuat.GiaVon,
+    ThongSoKyThuat.GiaBan
+FROM Laptop
+INNER JOIN ThongSoKyThuat ON Laptop.ID = ThongSoKyThuat.TenLaptop
+LEFT JOIN LaptopNhap ON ThongSoKyThuat.MaLaptop = LaptopNhap.MaLaptop
+INNER JOIN Hang ON Laptop.Hang = Hang.ID
+GROUP BY
+    Laptop.MaLaptop,
+    Laptop.TenLaptop,
+    Hang.TenHang,
+    ThongSoKyThuat.RAM,
+    ThongSoKyThuat.CPU,
+    ThongSoKyThuat.OCung,
+    ThongSoKyThuat.GiaVon,
+    ThongSoKyThuat.GiaBan;
+*/
