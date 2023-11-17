@@ -186,43 +186,43 @@ GO
 
 -- Continue with the rest of the tables...
 -- Insert into BienThe
-INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
 VALUES
-(1, 'MBT01', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
-(2, 'MBT02', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(3, 'MBT03', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(4, 'MBT04', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(5, 'MBT05', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(6, 'MBT06', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(7, 'MBT07', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(8, 'MBT08', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(9, 'MBT09', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url');
+(1, 'MBT01', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url'),
+(2, 'MBT02', 2, 2, 2, 2, 2, 'Silver', 2, 12000000, 'image_url'),
+(3, 'MBT03', 3, 3, 3, 3, 3, 'Grey', 3, 16000000, 'image_url'),
+(4, 'MBT04', 4, 4, 4, 4, 4, 'Gold', 4, 20000000, 'image_url'),
+(5, 'MBT05', 5, 5, 5, 5, 5, 'Blue', 5, 24000000, 'image_url'),
+(6, 'MBT06', 6, 6, 6, 6, 6, 'Red', 6, 28000000, 'image_url'),
+(7, 'MBT07', 7, 7, 7, 7, 7, 'White', 7, 32000000, 'image_url'),
+(8, 'MBT08', 8, 8, 8, 8, 8, 'Black', 8, 36000000, 'image_url'),
+(9, 'MBT09', 9, 9, 9, 9, 9, 'Silver', 9, 40000000, 'image_url'),
+(10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url');
 GO
 
 -- Insert into BienThe
-INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
 VALUES
-(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
-(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
-(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
-(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url');
+(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 8000000, 'image_url'),
+(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 12000000, 'image_url'),
+(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 16000000, 'image_url'),
+(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 20000000, 'image_url'),
+(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 24000000, 'image_url'),
+(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 28000000, 'image_url'),
+(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 32000000, 'image_url'),
+(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 36000000, 'image_url'),
+(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url'),
+(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url'),
+(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 12000000, 'image_url'),
+(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 16000000, 'image_url'),
+(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 20000000, 'image_url'),
+(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 24000000, 'image_url'),
+(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 28000000, 'image_url'),
+(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 32000000, 'image_url'),
+(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 36000000, 'image_url'),
+(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 40000000, 'image_url'),
+(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url'),
+(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url');
 GO
 
 -- Insert into Serial
@@ -255,8 +255,9 @@ VALUES
 GO
 
 
-SELECT MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, COUNT(serialNumber) AS [Số lượng] FROM BienThe LEFT JOIN Serial ON BienThe.ID = Serial.ID_BienThe
-GROUP BY MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan 
+
+SELECT MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, COUNT(serialNumber) AS [Số lượng] FROM BienThe LEFT JOIN Serial ON BienThe.ID = Serial.ID_BienThe
+GROUP BY MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia
 GO
 SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE TenHang = 'Dell'
 SELECT Laptop.ID, MaLaptop, TenLaptop, PhanLoai.ID AS PhanLoai, PhanLoai.Tenloai, Hang.ID AS Hang, Hang.TenHang, DongLaptop.ID AS DongLaptop, DongLaptop.TenDong, NamSanXuat  FROM Laptop JOIN PhanLoai ON Laptop.PhanLoai = PhanLoai.ID JOIN DongLaptop ON Laptop.DongLaptop = DongLaptop.ID JOIN Hang ON Hang.ID = DongLaptop.Hang
@@ -265,9 +266,14 @@ SELECT * FROM RAM
 SELECT * FROM dbo.Laptop
 SELECT * FROM dbo.MoTa
 SELECT * FROM dbo.BienThe
+SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE dbo.DongLaptop.ID = 1
+SELECT * FROM dbo.Serial
 
-	SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE dbo.DongLaptop.ID = 1
-	SELECT * FROM dbo.Serial
+SELECT * FROM
+    (SELECT ROW_NUMBER() OVER (ORDER BY MaLaptop DESC) AS rownum, Laptop.ID, MaLaptop, TenLaptop, PhanLoai.ID AS PhanLoai, PhanLoai.Tenloai, Hang.ID AS Hang, Hang.TenHang, DongLaptop.ID AS DongLaptop, DongLaptop.TenDong, NamSanXuat  FROM Laptop JOIN PhanLoai ON Laptop.PhanLoai = PhanLoai.ID JOIN DongLaptop ON Laptop.DongLaptop = DongLaptop.ID JOIN Hang ON Hang.ID = DongLaptop.Hang)
+    AS temp
+    WHERE rownum BETWEEN 1 AND 10
+	SELECT Laptop.ID, MaLaptop, TenLaptop, PhanLoai.ID AS PhanLoai, PhanLoai.Tenloai, Hang.ID AS Hang, Hang.TenHang, DongLaptop.ID AS DongLaptop, DongLaptop.TenDong, NamSanXuat  FROM Laptop JOIN PhanLoai ON Laptop.PhanLoai = PhanLoai.ID JOIN DongLaptop ON Laptop.DongLaptop = DongLaptop.ID JOIN Hang ON Hang.ID = DongLaptop.Hang
 /*
 SELECT * FROM BienTheSELECT
     Laptop.MaLaptop,

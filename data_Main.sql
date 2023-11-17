@@ -174,8 +174,7 @@ CREATE TABLE BienThe(
 	OCung INT FOREIGN KEY REFERENCES dbo.OCung(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	MauSac NVARCHAR(20) NOT NULL,
 	HeDieuHanh INT FOREIGN KEY REFERENCES dbo.HeDieuHanh(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
-	GiaVon FLOAT NOT NULL,
-	GiaBan FLOAT NOT NULL,
+	Gia FLOAT NOT NULL,
 	Hinh VARCHAR(255) NOT NULL
 )
 GO
@@ -305,8 +304,7 @@ CREATE PROCEDURE InsertIntoBienThe
 	@OCung INT,
 	@MauSac NVARCHAR(20),
 	@HeDieuHanh INT,
-	@GiaVon FLOAT,
-	@GiaBan FLOAT,
+	@Gia FLOAT,
 	@Hinh VARCHAR(255)
 AS
 BEGIN
@@ -322,8 +320,8 @@ BEGIN
 		AND HeDieuHanh = @HeDieuHanh
 	)
 	BEGIN
-		INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
-		VALUES (@ID_Laptop, @MaBienThe, @CPU, @RAM, @ManHinh, @GPU, @OCung, @MauSac, @HeDieuHanh, @GiaVon, @GiaBan, @Hinh)
+		INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
+		VALUES (@ID_Laptop, @MaBienThe, @CPU, @RAM, @ManHinh, @GPU, @OCung, @MauSac, @HeDieuHanh, @Gia, @Hinh)
 	END
 END
 GO
