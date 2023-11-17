@@ -200,6 +200,31 @@ VALUES
 (10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url');
 GO
 
+-- Insert into BienThe
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+VALUES
+(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
+(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
+(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
+(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
+(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
+(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
+(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
+(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
+(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
+(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
+(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
+(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
+(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
+(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
+(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
+(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
+(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
+(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
+(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
+(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url');
+GO
+
 -- Insert into Serial
 INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
 VALUES
@@ -229,30 +254,6 @@ VALUES
 (20, 'SN31',1);
 GO
 
--- Insert into BienThe
-INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
-VALUES
-(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
-(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
-(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
-(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url');
-GO
 
 SELECT MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, COUNT(serialNumber) AS [Số lượng] FROM BienThe LEFT JOIN Serial ON BienThe.ID = Serial.ID_BienThe
 GROUP BY MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan 
@@ -266,7 +267,7 @@ SELECT * FROM dbo.MoTa
 SELECT * FROM dbo.BienThe
 
 	SELECT DongLaptop.ID, MaDong, Hang, Hang.TenHang, TenDong FROM Donglaptop JOIN Hang ON Hang.ID = DongLaptop.Hang WHERE dbo.DongLaptop.ID = 1
-
+	SELECT * FROM dbo.Serial
 /*
 SELECT * FROM BienTheSELECT
     Laptop.MaLaptop,
