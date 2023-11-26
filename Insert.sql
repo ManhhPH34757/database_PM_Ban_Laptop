@@ -422,3 +422,38 @@ VALUES
 	--
 	
 
+-- insert PhieuDoi
+
+INSERT INTO dbo.PhieuDoi
+(
+    MaPhieuDoi,
+    MaKH,
+    MaHD,
+    MaNV,
+    NgayTao,
+    LiDo
+)
+VALUES
+(   'PD001',        -- MaPhieuDoi - varchar(30)
+    'KH001',        -- MaKH - varchar(20)
+    1,         -- MaHD - int
+    'NV002',        -- MaNV - varchar(20)
+    GETDATE(), -- NgayTao - date
+    N'aa'        -- LiDo - nvarchar(255)
+    )
+
+
+	--insert CT phieudoi
+
+INSERT INTO dbo.CTPhieuDoi
+(
+    ID_PhieuDoi,
+    ID_Serial_Old,
+    ID_Serial_New
+)
+VALUES
+(   1, -- ID_PhieuDoi - int
+    1, -- ID_Serial_Old - int
+    2  -- ID_Serial_New - int
+    )
+

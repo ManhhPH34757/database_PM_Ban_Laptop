@@ -17,6 +17,13 @@ SELECT * FROM dbo.BienThe
 
 -- select hoadon
 
+SELECT dbo.HoaDon.ID AS 'ID_HoaDon', dbo.HoaDon.MaHD ,dbo.Serial.ID AS 'ID_Serial', dbo.Serial.SerialNumber 
+FROM dbo.CTHoaDon JOIN dbo.HoaDon ON HoaDon.ID = CTHoaDon.MaHD
+	JOIN dbo.Serial ON Serial.ID = CTHoaDon.ID_Serial
+
+	SELECT * FROM dbo.CTHoaDon JOIN dbo.HoaDon ON HoaDon.ID = CTHoaDon.MaHD WHERE dbo.HoaDon.MaHD = 'HD001';
+
+
 SELECT HoaDon.ID, dbo.HoaDon.MaHD, HoaDon.MaKH,dbo.HinhThucVanChuyen.ID AS 'ID_HinhThucVanChuyen',
 				dbo.HinhThucVanChuyen.HinhThuc AS 'HinhThucVanChuyen',dbo.HinhThucThanhToan.ID AS 'ID_HinhThucThanhToan',
 				dbo.HinhThucThanhToan.HinhThuc AS 'HinhThucThanhToan',
@@ -68,6 +75,20 @@ SELECT CTHoaDon.ID, dbo.HoaDon.ID AS [ID_HoaDon], dbo.HoaDon.MaHD, dbo.CTHoaDon.
 
 -- select PhieuDoi
 
+
+SELECT dbo.PhieuDoi.ID AS 'ID_PhieuDoi', dbo.PhieuDoi.MaPhieuDoi,dbo.Serial.ID AS 'ID_Serial_Old', dbo.Serial.SerialNumber AS 'SerialNumber_Old', (SELECT Gia FROM dbo.BienThe JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CTPhieuDoi ON CTPhieuDoi.ID_Serial_Old = Serial.ID WHERE SerialNumber = dbo.CTPhieuDoi.ID_Serial_Old) AS [GiaCu],
+	dbo.Serial.ID AS 'ID_Serial_New', dbo.Serial.SerialNumber AS 'SerialNumber_New'
+FROM dbo.CTPhieuDoi JOIN dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi
+	JOIN dbo.Serial ON Serial.ID = CTPhieuDoi.ID_Serial_Old AND Serial.ID = CTPhieuDoi.ID_Serial_New
+	JOIN dbo.BienThe ON BienThe.ID = Serial.ID_BienThe
+GO
+
+
+SELECT * FROM dbo.PhieuDoi WHERE MaPhieuDoi = ?;
+SELECT * FROM dbo.CTPhieuDoi JOIN dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi WHERE MaPhieuDoi = ?;
+
+SELECT * FROM dbo.CTPhieuDoi
+
 SELECT * FROM dbo.PhieuDoi
 
 SELECT dbo.PhieuDoi.ID, dbo.PhieuDoi.MaPhieuDoi, dbo.PhieuDoi.MaKH,dbo.KhachHang.HoTen AS 'HoTenKhachHang',
@@ -111,6 +132,7 @@ SELECT dbo.PhieuDoi.ID, dbo.PhieuDoi.MaPhieuDoi, dbo.PhieuDoi.MaKH,dbo.KhachHang
 			WHERE MaPhieuDoi = ?;
 
 
+-- select CTPhieuDoi
 
 
 			SELECT 

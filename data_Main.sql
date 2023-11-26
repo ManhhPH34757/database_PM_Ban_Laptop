@@ -251,18 +251,6 @@ CREATE TABLE HoaDon(
 	TongTien FLOAT NOT NULL
 )
 GO 
-SELECT * FROM dbo.HoaDon
-SELECT dbo.HoaDon.MaHD, HoaDon.MaKH,dbo.HinhThucVanChuyen.ID AS 'ID_HinhThucVanChuyen', dbo.HinhThucVanChuyen.HinhThuc AS 'HinhThucVanChuyen',dbo.HinhThucThanhToan.ID AS 'ID_HinhThucThanhToan',
-	dbo.HinhThucThanhToan.HinhThuc AS 'HinhThucThanhToan',
-	dbo.PhieuGiamGia.ID AS 'ID_PhieuGiamGia', PhieuGiamGia.MaPG, dbo.HoaDon.DotGiamGia,
-	HoaDon.MaNV,
-	dbo.HoaDon.NgayTao, dbo.HoaDon.TongTien
-FROM dbo.HoaDon JOIN  dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH
-			JOIN dbo.HinhThucVanChuyen ON HinhThucVanChuyen.ID = HoaDon.HinhThucVanChuyen
-			JOIN dbo.HinhThucThanhToan ON HinhThucThanhToan.ID = HoaDon.HinhThucThanhToan
-			LEFT JOIN dbo.PhieuGiamGia ON PhieuGiamGia.ID = HoaDon.PhieuGiamGia
-			LEFT JOIN dbo.DotGiamGia ON DotGiamGia.MaDG = dbo.HoaDon.DotGiamGia
-			JOIN dbo.NhanVien ON NhanVien.MaNV = HoaDon.MaNV
 
 
 CREATE TABLE CTHoaDon(
@@ -272,11 +260,6 @@ CREATE TABLE CTHoaDon(
 )
 GO 
 
-SELECT dbo.HoaDon.ID AS 'ID_HoaDon', dbo.HoaDon.MaHD ,dbo.Serial.ID AS 'ID_Serial', dbo.Serial.SerialNumber 
-FROM dbo.CTHoaDon JOIN dbo.HoaDon ON HoaDon.ID = CTHoaDon.MaHD
-	JOIN dbo.Serial ON Serial.ID = CTHoaDon.ID_Serial
-
-	SELECT * FROM dbo.CTHoaDon JOIN dbo.HoaDon ON HoaDon.ID = CTHoaDon.MaHD WHERE dbo.HoaDon.MaHD = 'HD001';
 
 CREATE TABLE PhieuDoi(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -288,7 +271,7 @@ CREATE TABLE PhieuDoi(
 	LiDo NVARCHAR(255) NOT NULL
 )
 GO
-SELECT * FROM dbo.HoaDon WHERE MaHD =?
+
 CREATE TABLE CTPhieuDoi(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	ID_PhieuDoi INT FOREIGN KEY REFERENCES dbo.PhieuDoi(ID) NOT NULL,
@@ -296,77 +279,11 @@ CREATE TABLE CTPhieuDoi(
 	ID_Serial_New INT FOREIGN KEY REFERENCES dbo.Serial(ID) NOT NULL
 )
 GO 
-SELECT * FROM dbo.PhieuDoi WHERE MaPhieuDoi = ?
-SELECT * FROM dbo.CTPhieuDoi JOIN dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi WHERE MaPhieuDoi = 
-SELECT * FROM dbo.PhieuDoi
-SELECT * FROM dbo.CTPhieuDoi
-DELETE FROM dbo.CTPhieuDoi WHERE ID_PhieuDoi = ?
-
-SELECT dbo.PhieuDoi.ID AS 'ID_PhieuDoi', dbo.PhieuDoi.MaPhieuDoi,dbo.Serial.ID AS 'ID_Serial_Old', dbo.Serial.SerialNumber AS 'SerialNumber_Old', (SELECT Gia FROM dbo.BienThe JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CTPhieuDoi ON CTPhieuDoi.ID_Serial_Old = Serial.ID WHERE SerialNumber = dbo.CTPhieuDoi.ID_Serial_Old) AS [GiaCu],
-	dbo.Serial.ID AS 'ID_Serial_New', dbo.Serial.SerialNumber AS 'SerialNumber_New'
-FROM dbo.CTPhieuDoi JOIN dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi
-	JOIN dbo.Serial ON Serial.ID = CTPhieuDoi.ID_Serial_Old AND Serial.ID = CTPhieuDoi.ID_Serial_New
-	JOIN dbo.BienThe ON BienThe.ID = Serial.ID_BienThe
-GO
-
-
-SELECT * FROM dbo.Serial
-SELECT 
-	dbo.CTPhieuDoi.ID,
-    dbo.PhieuDoi.ID AS 'ID_PhieuDoi', 
-    dbo.PhieuDoi.MaPhieuDoi,
-    dbo.CTPhieuDoi.ID_Serial_Old AS 'ID_Serial_Old', 
-    SerialOld.SerialNumber AS 'SerialNumber_Old',
-	BienThe_Old.Gia AS 'Gia_Old',
-    dbo.CTPhieuDoi.ID_Serial_New AS 'ID_Serial_New', 
-    SerialNew.SerialNumber AS 'SerialNumber_New',
-	BienThe_New.Gia AS 'Gia_New'
-FROM  
-    dbo.CTPhieuDoi 
-JOIN 
-    dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi
-JOIN 
-    dbo.Serial AS SerialOld ON SerialOld.ID = CTPhieuDoi.ID_Serial_Old
-JOIN 
-    dbo.Serial AS SerialNew ON SerialNew.ID = CTPhieuDoi.ID_Serial_New
-JOIN 
-    dbo.BienThe AS BienThe_Old ON BienThe_Old.ID = SerialOld.ID_BienThe
-JOIN 
-	dbo.BienThe AS BienThe_New ON BienThe_New.ID = SerialNew.ID_BienThe
-WHERE MaPhieuDoi = 'PD001'
 
 
 
-	SELECT * FROM dbo.PhieuDoi
-INSERT INTO dbo.PhieuDoi
-(
-    MaPhieuDoi,
-    MaKH,
-    MaHD,
-    MaNV,
-    NgayTao,
-    LiDo
-)
-VALUES
-(   'PD001',        -- MaPhieuDoi - varchar(30)
-    'KH001',        -- MaKH - varchar(20)
-    1,         -- MaHD - int
-    'NV002',        -- MaNV - varchar(20)
-    GETDATE(), -- NgayTao - date
-    N'aa'        -- LiDo - nvarchar(255)
-    )
 
-INSERT INTO dbo.CTPhieuDoi
-(
-    ID_PhieuDoi,
-    ID_Serial_Old,
-    ID_Serial_New
-)
-VALUES
-(   1, -- ID_PhieuDoi - int
-    1, -- ID_Serial_Old - int
-    2  -- ID_Serial_New - int
-    )
+
 CREATE TABLE LS_HoaDon(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
