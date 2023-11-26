@@ -16,8 +16,6 @@ CREATE TABLE NhanVien(
 )
 GO
 
-SELECT * FROM dbo.NhanVien WHERE HoTen LIKE ? OR SoDienThoai LIKE ?
-
 CREATE TABLE TaiKhoan(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) ON DELETE CASCADE ON UPDATE CASCADE UNIQUE NOT NULL,
@@ -28,7 +26,8 @@ CREATE TABLE TaiKhoan(
 GO
 
 CREATE TABLE PhieuGiamGia(
-	MaPG VARCHAR(20) PRIMARY KEY,
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	MaPG VARCHAR(20) UNIQUE NOT NULL,
 	TenPhieu NVARCHAR(30) NOT NULL,
 	Han DATE NOT NULL,
 	SoLuong INT NOT NULL,
@@ -44,8 +43,7 @@ CREATE TABLE KhachHang(
 	NgaySinh DATE NOT NULL,
 	GioiTinh BIT NOT NULL,
 	Email VARCHAR(100) NOT NULL,
-	DiaChi NVARCHAR(255) NOT NULL,
-	PhieuGiamGia VARCHAR(20) FOREIGN KEY REFERENCES PhieuGiamGia(MaPG) NULL
+	DiaChi NVARCHAR(255) NOT NULL
 )
 GO
 
@@ -60,7 +58,7 @@ GO
 CREATE TABLE DongLaptop(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaDong VARCHAR(20) UNIQUE NOT NULL,
-	Hang INT FOREIGN KEY REFERENCES Hang(ID) NOT NULL,
+	Hang INT FOREIGN KEY REFERENCES Hang(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	TenDong NVARCHAR(30) NOT NULL
 )
 GO 
@@ -143,15 +141,15 @@ CREATE TABLE Laptop(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaLaptop VARCHAR(20) UNIQUE NOT NULL,
 	TenLaptop NVARCHAR(255) NOT NULL,
-	PhanLoai INT FOREIGN KEY REFERENCES dbo.PhanLoai(ID) NOT NULL,
-	DongLaptop INT FOREIGN KEY REFERENCES DongLaptop(ID) NOT NULL,
+	PhanLoai INT FOREIGN KEY REFERENCES dbo.PhanLoai(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	DongLaptop INT FOREIGN KEY REFERENCES DongLaptop(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	NamSanXuat INT NOT NULL
 )
 GO
 
 CREATE TABLE MoTa(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaLaptop INT FOREIGN KEY REFERENCES Laptop(ID) UNIQUE NOT NULL,
+	MaLaptop INT FOREIGN KEY REFERENCES Laptop(ID) ON DELETE CASCADE ON UPDATE CASCADE UNIQUE NOT NULL,
 	SoLuongLoa INT NOT NULL,
 	Keyboard NVARCHAR(50) NOT NULL,
 	TouchPad NVARCHAR(50) NOT NULL,
@@ -167,31 +165,31 @@ GO
 
 CREATE TABLE BienThe(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
-	ID_Laptop INT FOREIGN KEY REFERENCES Laptop(ID) NOT NULL,
+	ID_Laptop INT FOREIGN KEY REFERENCES Laptop(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	MaBienThe VARCHAR(20) UNIQUE NOT NULL,
-	CPU INT FOREIGN KEY REFERENCES dbo.CPU(ID) NOT NULL,
-	RAM INT FOREIGN KEY REFERENCES dbo.RAM(ID) NOT NULL,
-	ManHinh INT FOREIGN KEY REFERENCES dbo.ManHinh(ID) NOT NULL,
-	GPU INT FOREIGN KEY REFERENCES dbo.GPU(ID) NOT NULL,
-	OCung INT FOREIGN KEY REFERENCES dbo.OCung(ID) NOT NULL,
+	CPU INT FOREIGN KEY REFERENCES dbo.CPU(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	RAM INT FOREIGN KEY REFERENCES dbo.RAM(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	ManHinh INT FOREIGN KEY REFERENCES dbo.ManHinh(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	GPU INT FOREIGN KEY REFERENCES dbo.GPU(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	OCung INT FOREIGN KEY REFERENCES dbo.OCung(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	MauSac NVARCHAR(20) NOT NULL,
-	HeDieuHanh INT FOREIGN KEY REFERENCES dbo.HeDieuHanh(ID) NOT NULL,
-	GiaVon FLOAT NOT NULL,
-	GiaBan FLOAT NOT NULL,
+	HeDieuHanh INT FOREIGN KEY REFERENCES dbo.HeDieuHanh(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	Gia FLOAT NOT NULL,
 	Hinh VARCHAR(255) NOT NULL
 )
 GO
 
 CREATE TABLE Serial(
 	ID int IDENTITY(1,1) PRIMARY KEY,
-	ID_BienThe int FOREIGN KEY REFERENCES BienThe(ID) NOT NULL,
+	ID_BienThe int FOREIGN KEY REFERENCES BienThe(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	SerialNumber VARCHAR(30) UNIQUE NOT NULL,
 	TrangThai BIT NOT NULL
 )
 GO
 
 CREATE TABLE NhaCungCap(
-	MaNCC VARCHAR(20) PRIMARY KEY,
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	MaNCC VARCHAR(20) UNIQUE NOT NULL,
 	TenNCC NVARCHAR(100) NOT NULL,
 	NguoiPhuTrach NVARCHAR(30) NOT NULL,
 	SoDienThoai VARCHAR(13) NOT NULL,
@@ -203,8 +201,8 @@ GO
 CREATE TABLE HoaDonNhap(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaDN VARCHAR(30) UNIQUE NOT NULL,
-	NhaCungCap VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhaCungCap(MaNCC) NOT NULL,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
+	NhaCungCap INT FOREIGN KEY REFERENCES dbo.NhaCungCap(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	NgayTao DATE NOT NULL,
 	TongTien FLOAT NOT NULL
 )
@@ -212,11 +210,10 @@ GO
 
 CREATE TABLE ChiTietHDN(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaDN VARCHAR(30) FOREIGN KEY REFERENCES dbo.HoaDonNhap(MaDN) NOT NULL,
-	ID_Serial INT FOREIGN KEY REFERENCES dbo.Serial(ID) NOT NULL
+	MaDN INT FOREIGN KEY REFERENCES dbo.HoaDonNhap(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	ID_Serial INT FOREIGN KEY REFERENCES dbo.Serial(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL
 )
 GO
-
 
 CREATE TABLE DotGiamGia(
 	MaDG VARCHAR(20) PRIMARY KEY,
@@ -242,84 +239,135 @@ CREATE TABLE HinhThucThanhToan(
 GO
 
 CREATE TABLE HoaDon(
-	MaHD VARCHAR(20) PRIMARY KEY,
-	MaKH VARCHAR(20) FOREIGN KEY REFERENCES dbo.KhachHang(MaKH) NOT NULL,
-	HinhThucVanChuyen INT FOREIGN KEY REFERENCES dbo.HinhThucVanChuyen(ID) NOT NULL,
-	HinhThucThanhToan INT FOREIGN KEY REFERENCES dbo.HinhThucThanhToan(ID) NOT NULL,
-	PhieuGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.PhieuGiamGia(MaPG) NULL,
-	DotGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.DotGiamGia(MaDG) NULL,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	MaHD VARCHAR(20) UNIQUE NOT NULL,
+	MaKH VARCHAR(20) FOREIGN KEY REFERENCES dbo.KhachHang(MaKH) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	HinhThucVanChuyen INT FOREIGN KEY REFERENCES dbo.HinhThucVanChuyen(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	HinhThucThanhToan INT FOREIGN KEY REFERENCES dbo.HinhThucThanhToan(ID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	PhieuGiamGia INT FOREIGN KEY REFERENCES dbo.PhieuGiamGia(ID) ON DELETE CASCADE ON UPDATE CASCADE NULL,
+	DotGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.DotGiamGia(MaDG) ON DELETE CASCADE ON UPDATE CASCADE NULL,
+	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	NgayTao DATE NOT NULL,
 	TongTien FLOAT NOT NULL
 )
 GO 
+SELECT * FROM dbo.HoaDon
+SELECT dbo.HoaDon.MaHD, HoaDon.MaKH,dbo.HinhThucVanChuyen.ID AS 'ID_HinhThucVanChuyen', dbo.HinhThucVanChuyen.HinhThuc AS 'HinhThucVanChuyen',dbo.HinhThucThanhToan.ID AS 'ID_HinhThucThanhToan',
+	dbo.HinhThucThanhToan.HinhThuc AS 'HinhThucThanhToan',
+	dbo.PhieuGiamGia.ID AS 'ID_PhieuGiamGia', PhieuGiamGia.MaPG, dbo.HoaDon.DotGiamGia,
+	HoaDon.MaNV,
+	dbo.HoaDon.NgayTao, dbo.HoaDon.TongTien
+FROM dbo.HoaDon JOIN  dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH
+			JOIN dbo.HinhThucVanChuyen ON HinhThucVanChuyen.ID = HoaDon.HinhThucVanChuyen
+			JOIN dbo.HinhThucThanhToan ON HinhThucThanhToan.ID = HoaDon.HinhThucThanhToan
+			LEFT JOIN dbo.PhieuGiamGia ON PhieuGiamGia.ID = HoaDon.PhieuGiamGia
+			LEFT JOIN dbo.DotGiamGia ON DotGiamGia.MaDG = dbo.HoaDon.DotGiamGia
+			JOIN dbo.NhanVien ON NhanVien.MaNV = HoaDon.MaNV
+
 
 CREATE TABLE CTHoaDon(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaHD VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) ON DELETE CASCADE NOT NULL,
-	ID_Serial INT FOREIGN KEY REFERENCES dbo.Serial(ID) ON DELETE CASCADE NOT NULL
+	MaHD INT FOREIGN KEY REFERENCES dbo.HoaDon(ID) ON UPDATE CASCADE NOT NULL,
+	ID_Serial INT FOREIGN KEY REFERENCES dbo.Serial(ID) ON UPDATE CASCADE NOT NULL
 )
 GO 
+
+SELECT dbo.HoaDon.ID AS 'ID_HoaDon', dbo.HoaDon.MaHD ,dbo.Serial.ID AS 'ID_Serial', dbo.Serial.SerialNumber 
+FROM dbo.CTHoaDon JOIN dbo.HoaDon ON HoaDon.ID = CTHoaDon.MaHD
+	JOIN dbo.Serial ON Serial.ID = CTHoaDon.ID_Serial
+
+	SELECT * FROM dbo.CTHoaDon JOIN dbo.HoaDon ON HoaDon.ID = CTHoaDon.MaHD WHERE dbo.HoaDon.MaHD = 'HD001';
 
 CREATE TABLE PhieuDoi(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaPhieuDoi VARCHAR(30) UNIQUE NOT NULL,
 	MaKH VARCHAR(20) FOREIGN KEY REFERENCES dbo.KhachHang(MaKH) NOT NULL,
-	MaHD VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
+	MaHD INT FOREIGN KEY REFERENCES dbo.HoaDon(ID) NULL,
+	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
 	NgayTao DATE NOT NULL,
 	LiDo NVARCHAR(255) NOT NULL
 )
 GO
-
+SELECT * FROM dbo.HoaDon WHERE MaHD =?
 CREATE TABLE CTPhieuDoi(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
-	ID_PhieuDoi INT FOREIGN KEY REFERENCES dbo.PhieuDoi(ID) ON DELETE CASCADE NOT NULL,
+	ID_PhieuDoi INT FOREIGN KEY REFERENCES dbo.PhieuDoi(ID) NOT NULL,
 	ID_Serial_Old INT FOREIGN KEY REFERENCES dbo.Serial(ID) NOT NULL,
 	ID_Serial_New INT FOREIGN KEY REFERENCES dbo.Serial(ID) NOT NULL
 )
 GO 
-/*
+SELECT * FROM dbo.PhieuDoi WHERE MaPhieuDoi = ?
+SELECT * FROM dbo.CTPhieuDoi JOIN dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi WHERE MaPhieuDoi = 
+SELECT * FROM dbo.PhieuDoi
+SELECT * FROM dbo.CTPhieuDoi
+DELETE FROM dbo.CTPhieuDoi WHERE ID_PhieuDoi = ?
+
+SELECT dbo.PhieuDoi.ID AS 'ID_PhieuDoi', dbo.PhieuDoi.MaPhieuDoi,dbo.Serial.ID AS 'ID_Serial_Old', dbo.Serial.SerialNumber AS 'SerialNumber_Old', (SELECT Gia FROM dbo.BienThe JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID JOIN dbo.CTPhieuDoi ON CTPhieuDoi.ID_Serial_Old = Serial.ID WHERE SerialNumber = dbo.CTPhieuDoi.ID_Serial_Old) AS [GiaCu],
+	dbo.Serial.ID AS 'ID_Serial_New', dbo.Serial.SerialNumber AS 'SerialNumber_New'
+FROM dbo.CTPhieuDoi JOIN dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi
+	JOIN dbo.Serial ON Serial.ID = CTPhieuDoi.ID_Serial_Old AND Serial.ID = CTPhieuDoi.ID_Serial_New
+	JOIN dbo.BienThe ON BienThe.ID = Serial.ID_BienThe
+GO
+
+
+SELECT * FROM dbo.Serial
+SELECT 
+	dbo.CTPhieuDoi.ID,
+    dbo.PhieuDoi.ID AS 'ID_PhieuDoi', 
+    dbo.PhieuDoi.MaPhieuDoi,
+    dbo.CTPhieuDoi.ID_Serial_Old AS 'ID_Serial_Old', 
+    SerialOld.SerialNumber AS 'SerialNumber_Old',
+	BienThe_Old.Gia AS 'Gia_Old',
+    dbo.CTPhieuDoi.ID_Serial_New AS 'ID_Serial_New', 
+    SerialNew.SerialNumber AS 'SerialNumber_New',
+	BienThe_New.Gia AS 'Gia_New'
+FROM  
+    dbo.CTPhieuDoi 
+JOIN 
+    dbo.PhieuDoi ON PhieuDoi.ID = CTPhieuDoi.ID_PhieuDoi
+JOIN 
+    dbo.Serial AS SerialOld ON SerialOld.ID = CTPhieuDoi.ID_Serial_Old
+JOIN 
+    dbo.Serial AS SerialNew ON SerialNew.ID = CTPhieuDoi.ID_Serial_New
+JOIN 
+    dbo.BienThe AS BienThe_Old ON BienThe_Old.ID = SerialOld.ID_BienThe
+JOIN 
+	dbo.BienThe AS BienThe_New ON BienThe_New.ID = SerialNew.ID_BienThe
+WHERE MaPhieuDoi = 'PD001'
+
+
+
+	SELECT * FROM dbo.PhieuDoi
+INSERT INTO dbo.PhieuDoi
+(
+    MaPhieuDoi,
+    MaKH,
+    MaHD,
+    MaNV,
+    NgayTao,
+    LiDo
+)
+VALUES
+(   'PD001',        -- MaPhieuDoi - varchar(30)
+    'KH001',        -- MaKH - varchar(20)
+    1,         -- MaHD - int
+    'NV002',        -- MaNV - varchar(20)
+    GETDATE(), -- NgayTao - date
+    N'aa'        -- LiDo - nvarchar(255)
+    )
+
+INSERT INTO dbo.CTPhieuDoi
+(
+    ID_PhieuDoi,
+    ID_Serial_Old,
+    ID_Serial_New
+)
+VALUES
+(   1, -- ID_PhieuDoi - int
+    1, -- ID_Serial_Old - int
+    2  -- ID_Serial_New - int
+    )
 CREATE TABLE LS_HoaDon(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-
-CREATE TABLE LS_LaptopNhap(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	ID_Serial INT FOREIGN KEY REFERENCES dbo.Serial(ID) ON DELETE CASCADE NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-
-CREATE TABLE LS_PhieuGiamGia(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	PhieuGiamGia VARCHAR(20) FOREIGN KEY REFERENCES dbo.PhieuGiamGia(MaPG) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-
-CREATE TABLE LS_KhachHang(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-
-CREATE TABLE LS_DonHang(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-
-CREATE TABLE LS_DotGiamGia(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
 	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
@@ -330,58 +378,39 @@ GO
 CREATE TABLE LS_PhieuDoi(
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
+	PhieuDoi INT FOREIGN KEY REFERENCES dbo.HoaDon(ID) NOT NULL,
 	LichSuLamViec NVARCHAR(100) NOT NULL
 )
 GO
 
-CREATE TABLE LS_NhanVien(
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	MaNV VARCHAR(20) FOREIGN KEY REFERENCES dbo.NhanVien(MaNV) NOT NULL,
-	MaHoaDon VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(MaHD) NOT NULL,
-	LichSuLamViec NVARCHAR(100) NOT NULL
-)
-GO
-<<<<<<< HEAD:Table.sql
-
--- đơn hàng , đơn hàng chi tiết, ls đơn hàng, phiếu đổi, ls phiếu đổi
-
-INSERT dbo.NhanVien
-(
-    MaNV,
-    HoTen,
-    SoDienThoai,
-    NgaySinh,
-    GioiTinh,
-    Email,
-    Hinh,
-    DiaChi
-)
-VALUES
-(   'NV001',        -- MaNV - varchar(20)
-    N'Nguyễn Thị Hương Giang',       -- HoTen - nvarchar(50)
-    '0369584462',        -- SoDienThoai - varchar(13)
-    '2004-08-08', -- NgaySinh - date
-    0,      -- GioiTinh - bit
-    'giangchan08082004@gmial.com',        -- Email - varchar(100)
-    'Khong',        -- Hinh - varchar(255)
-    N'113 đan khê - di trạch - hoài đức'        -- DiaChi - nvarchar(255)
-    );
-
-	INSERT dbo.TaiKhoan
-	(
-	    MaNV,
-	    TenDangNhap,
-	    MatKhau,
-	    VaiTro
+CREATE PROCEDURE InsertIntoBienThe
+	@ID_Laptop INT,
+	@MaBienThe VARCHAR(20),
+	@CPU INT,
+	@RAM INT,
+	@ManHinh INT,
+	@GPU INT,
+	@OCung INT,
+	@MauSac NVARCHAR(20),
+	@HeDieuHanh INT,
+	@Gia FLOAT,
+	@Hinh VARCHAR(255)
+AS
+BEGIN
+	IF NOT EXISTS (
+		SELECT * FROM BienThe
+		WHERE ID_Laptop = @ID_Laptop
+		AND CPU = @CPU
+		AND RAM = @RAM
+		AND ManHinh = @ManHinh
+		AND GPU = @GPU
+		AND OCung = @OCung
+		AND MauSac = @MauSac
+		AND HeDieuHanh = @HeDieuHanh
 	)
-	VALUES
-	(   'NV001',  -- MaNV - varchar(20)
-	    'GiangChan',  -- TenDangNhap - varchar(100)
-	    'giang123',  -- MatKhau - varchar(100)
-	    1 -- VaiTro - bit
-	    );
-=======
-*/
->>>>>>> b6dbb88a6f7489b1345f2e51e505897db00b4502:data_Main.sql
-
+	BEGIN
+		INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
+		VALUES (@ID_Laptop, @MaBienThe, @CPU, @RAM, @ManHinh, @GPU, @OCung, @MauSac, @HeDieuHanh, @Gia, @Hinh)
+	END
+END
+GO

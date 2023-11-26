@@ -31,6 +31,21 @@ VALUES
 ('MD10', 5, 'ZenBook');
 GO
 
+INSERT INTO DongLaptop(MaDong, Hang, TenDong)
+VALUES
+('DL01', 6, 'Series 1'),
+('DL02', 6, 'Series 2'),
+('DL03', 7, 'Surface Laptop 4'),
+('DL04', 7, 'Surface Laptop 5'),
+('DL05', 8, 'Vaio S VJS132X0511S'),
+('DL06', 9, 'Galaxy Book3 Pro'),
+('DL07', 9, 'Galaxy Book3 Ultra'),
+('DL08', 10, 'Gram Style'),
+('DL09', 10, 'Gram SuperSlim'),
+('DL10', 7, 'Surface Pro 9');
+GO
+
+
 -- Continue with the rest of the tables...
 -- Insert into PhanLoai
 INSERT INTO PhanLoai(MaLoai, TenLoai, MoTa)
@@ -171,100 +186,239 @@ GO
 
 -- Continue with the rest of the tables...
 -- Insert into BienThe
-INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
 VALUES
-(1, 'MBT01', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
-(2, 'MBT02', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(3, 'MBT03', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(4, 'MBT04', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(5, 'MBT05', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(6, 'MBT06', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(7, 'MBT07', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(8, 'MBT08', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(9, 'MBT09', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url');
-GO
-
--- Insert into Serial
-INSERT INTO Serial(ID_BienThe, SerialNumber)
-VALUES
-(1, 'SN01'),
-(2, 'SN02'),
-(3, 'SN03'),
-(4, 'SN04'),
-(5, 'SN05'),
-(6, 'SN06'),
-(7, 'SN07'),
-(8, 'SN08'),
-(9, 'SN09'),
-(10, 'SN10');
-GO
-
-INSERT INTO Serial(ID_BienThe, SerialNumber)
-VALUES
-(11, 'SN21'),
-(22, 'SN22'),
-(23, 'SN13'),
-(24, 'SN24'),
-(25, 'SN25'),
-(26, 'SN26'),
-(27, 'SN27'),
-(28, 'SN28'),
-(29, 'SN29'),
-(20, 'SN30');
+(1, 'MBT01', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url'),
+(2, 'MBT02', 2, 2, 2, 2, 2, 'Silver', 2, 12000000, 'image_url'),
+(3, 'MBT03', 3, 3, 3, 3, 3, 'Grey', 3, 16000000, 'image_url'),
+(4, 'MBT04', 4, 4, 4, 4, 4, 'Gold', 4, 20000000, 'image_url'),
+(5, 'MBT05', 5, 5, 5, 5, 5, 'Blue', 5, 24000000, 'image_url'),
+(6, 'MBT06', 6, 6, 6, 6, 6, 'Red', 6, 28000000, 'image_url'),
+(7, 'MBT07', 7, 7, 7, 7, 7, 'White', 7, 32000000, 'image_url'),
+(8, 'MBT08', 8, 8, 8, 8, 8, 'Black', 8, 36000000, 'image_url'),
+(9, 'MBT09', 9, 9, 9, 9, 9, 'Silver', 9, 40000000, 'image_url'),
+(10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url');
 GO
 
 -- Insert into BienThe
-INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, Hinh)
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
 VALUES
-(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
-(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url'),
-(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 600.00, 660.00, 'image_url'),
-(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 700.00, 770.00, 'image_url'),
-(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 800.00, 880.00, 'image_url'),
-(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 900.00, 990.00, 'image_url'),
-(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 1000.00, 1100.00, 'image_url'),
-(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 1100.00, 1210.00, 'image_url'),
-(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 1200.00, 1320.00, 'image_url'),
-(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 1300.00, 1430.00, 'image_url'),
-(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 1400.00, 1540.00, 'image_url'),
-(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 500.00, 550.00, 'image_url');
+(1, 'MBT11', 2, 2, 2, 2, 2, 'Silver', 2, 8000000, 'image_url'),
+(1, 'MBT12', 3, 3, 3, 3, 3, 'Grey', 3, 12000000, 'image_url'),
+(2, 'MBT13', 4, 4, 4, 4, 4, 'Gold', 4, 16000000, 'image_url'),
+(2, 'MBT14', 5, 5, 5, 5, 5, 'Blue', 5, 20000000, 'image_url'),
+(3, 'MBT15', 6, 6, 6, 6, 6, 'Red', 6, 24000000, 'image_url'),
+(3, 'MBT16', 7, 7, 7, 7, 7, 'White', 7, 28000000, 'image_url'),
+(4, 'MBT17', 8, 8, 8, 8, 8, 'Black', 8, 32000000, 'image_url'),
+(4, 'MBT18', 9, 9, 9, 9, 9, 'Silver', 9, 36000000, 'image_url'),
+(5, 'MBT19', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url'),
+(5, 'MBT20', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url'),
+(6, 'MBT21', 2, 2, 2, 2, 2, 'Silver', 2, 12000000, 'image_url'),
+(6, 'MBT22', 3, 3, 3, 3, 3, 'Grey', 3, 16000000, 'image_url'),
+(7, 'MBT23', 4, 4, 4, 4, 4, 'Gold', 4, 20000000, 'image_url'),
+(7, 'MBT24', 5, 5, 5, 5, 5, 'Blue', 5, 24000000, 'image_url'),
+(8, 'MBT25', 6, 6, 6, 6, 6, 'Red', 6, 28000000, 'image_url'),
+(8, 'MBT26', 7, 7, 7, 7, 7, 'White', 7, 32000000, 'image_url'),
+(9, 'MBT27', 8, 8, 8, 8, 8, 'Black', 8, 36000000, 'image_url'),
+(9, 'MBT28', 9, 9, 9, 9, 9, 'Silver', 9, 40000000, 'image_url'),
+(10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url'),
+(10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url');
+GO
+
+-- Insert into Serial
+INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
+VALUES
+(1, 'SN01',1),
+(2, 'SN02',0),
+(3, 'SN03',1),
+(4, 'SN04',0),
+(5, 'SN05',1),
+(6, 'SN06',1),
+(7, 'SN07',1),
+(8, 'SN08',1),
+(9, 'SN09',1),
+(10, 'SN10',1);
+GO
+
+INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
+VALUES
+(11, 'SN32',1),
+(22, 'SN22',0),
+(23, 'SN13',1),
+(24, 'SN24',1),
+(25, 'SN25',1),
+(26, 'SN26',1),
+(27, 'SN27',1),
+(28, 'SN28',1),
+(29, 'SN29',1),
+(20, 'SN31',1);
 GO
 
 
-SELECT MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan, COUNT(serialNumber) AS [Số lượng] FROM BienThe LEFT JOIN Serial ON BienThe.ID = Serial.ID_BienThe
-GROUP BY MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, GiaVon, GiaBan 
-GO
-/*
-SELECT * FROM BienTheSELECT
-    Laptop.MaLaptop,
-    Laptop.TenLaptop,
-    Hang.TenHang AS Hang,
-    ThongSoKyThuat.RAM,
-    ThongSoKyThuat.CPU,
-    ThongSoKyThuat.OCung,
-    COUNT(LaptopNhap.SerialNumber) AS [SoLuong],
-    ThongSoKyThuat.GiaVon,
-    ThongSoKyThuat.GiaBan
-FROM Laptop
-INNER JOIN ThongSoKyThuat ON Laptop.ID = ThongSoKyThuat.TenLaptop
-LEFT JOIN LaptopNhap ON ThongSoKyThuat.MaLaptop = LaptopNhap.MaLaptop
-INNER JOIN Hang ON Laptop.Hang = Hang.ID
-GROUP BY
-    Laptop.MaLaptop,
-    Laptop.TenLaptop,
-    Hang.TenHang,
-    ThongSoKyThuat.RAM,
-    ThongSoKyThuat.CPU,
-    ThongSoKyThuat.OCung,
-    ThongSoKyThuat.GiaVon,
-    ThongSoKyThuat.GiaBan;
-*/
+
+--Insert NhanVien
+
+INSERT INTO dbo.NhanVien
+(
+    MaNV,
+    HoTen,
+    SoDienThoai,
+    NgaySinh,
+    GioiTinh,
+    Email,
+    Hinh,
+    DiaChi
+)
+VALUES
+(   'NV002',        -- MaNV - varchar(20)
+    N'Nguyễn Thị Hương Giang',       -- HoTen - nvarchar(50)
+    '0369584462',        -- SoDienThoai - varchar(13)
+    '2004-08-08', -- NgaySinh - date
+    0,      -- GioiTinh - bit
+    'giangchan08082004@gmail.com',        -- Email - varchar(100)
+    'arr.pgn',        -- Hinh - varchar(255)
+    N'Di Trạch'        -- DiaChi - nvarchar(255)
+    );
+
+	--Insert TaiKhoan
+	SELECT * FROM dbo.TaiKhoan
+INSERT dbo.TaiKhoan
+(
+    MaNV,
+    TenDangNhap,
+    MatKhau,
+    VaiTro
+)
+VALUES
+(   'NV001',  -- MaNV - varchar(20)
+    'khai123',  -- TenDangNhap - varchar(100)
+    'giang123',  -- MatKhau - varchar(100)
+    0 -- VaiTro - bit
+    ),
+	('NV002','giangchan','giang123',1);
+
+
+	--Insert PHieuGG
+	INSERT INTO dbo.PhieuGiamGia
+(
+    MaPG,
+    TenPhieu,
+    Han,
+    SoLuong,
+    GiaGiam,
+    DieuKienHoaDon
+)
+VALUES
+(   'PGG001',        -- MaPG - varchar(20)
+    N'Giảm 20%',       -- TenPhieu - nvarchar(30)
+    '2023-11-20', -- Han - date
+    20,         -- SoLuong - int
+    2000000,       -- GiaGiam - float
+    20000000        -- DieuKienHoaDon - float
+    ),
+	('PGG002','Giảm 5% cho đơn từ 15000000','2023-12-10',30,750000,15000000);
+
+
+	--Insert KhachHang
+	INSERT INTO dbo.KhachHang
+(
+    MaKH,
+    HoTen,
+    SoDienThoai,
+    NgaySinh,
+    GioiTinh,
+    Email,
+    DiaChi
+)
+VALUES
+(   'KH001',        -- MaKH - varchar(20)
+    N'Nguyễn Thị Hương Giang',       -- HoTen - nvarchar(50)
+    '0369584462',        -- SoDienThoai - varchar(13)
+    '2004-08-08', -- NgaySinh - date
+    0,      -- GioiTinh - bit
+    'giangchan08082004@gmail.com',        -- Email - varchar(100)
+    N'113 - Đan Khê'      -- DiaChi - nvarchar(255)
+   
+    ),
+	('KH002',N'Trần Thị Mỹ Duyên','0282828822','2004-02-11',0,'tranduyen204@gmail.com',N'113 Đan Khê'),
+	('KH003',N'Nguyễn Mạnh','0928277282','2004-07-27',1,'manh@gmail.com','10 phương canh');
+
+
+	--
+	SELECT * FROM dbo.Serial JOIN dbo.BienThe ON BienThe.ID = Serial.ID_BienThe
+
+	--HinhThucVanChuyen
+	INSERT dbo.HinhThucVanChuyen
+(
+    HinhThuc,
+    DonVi,
+    GiaVC
+)
+VALUES
+(   N'Giao Hàng Nhanh', -- HinhThuc - nvarchar(30)
+    N'Ninja', -- DonVi - nvarchar(30)
+    30000  -- GiaVC - float
+    ),
+	(N'Giao Hàng Tiết Kiệm',N'Giao Hàng Tiết Kiệm',20000);
+
+
+
+	--Insert HinhThucThanhToan
+	INSERT dbo.HinhThucThanhToan
+(
+    HinhThuc
+)
+VALUES
+(N'Thanh Toán Khi Nhận Hàng' -- HinhThuc - nvarchar(30)
+    ),(N'Thanh Toán Chuyển Khoản');
+
+	-- insert Hoa Don
+	SELECT dbo.HoaDon.MaHD FROM dbo.HoaDon
+SELECT * FROM dbo.HoaDon
+INSERT dbo.HoaDon
+(
+    MaHD,
+    MaKH,
+    HinhThucVanChuyen,
+    HinhThucThanhToan,
+    PhieuGiamGia,
+    DotGiamGia,
+    MaNV,
+    NgayTao,
+    TongTien
+)
+VALUES
+(   'HD001',        -- MaHD - varchar(20)
+    'KH001',        -- MaKH - varchar(20)
+    1,         -- HinhThucVanChuyen - int
+    1,         -- HinhThucThanhToan - int
+    NULL,        -- PhieuGiamGia - varchar(20)
+    NULL,        -- DotGiamGia - varchar(20)
+    'NV002',        -- MaNV - varchar(20)
+    GETDATE(), -- NgayTao - date
+    580000        -- TongTien - float
+    ),
+	('HD002','KH002',2,1,NULL,NULL,'NV001',GETDATE(),1450000);
+
+
+
+
+	--Insert ChiTietHoaDon
+	SELECT * FROM dbo.CTHoaDon
+SELECT * FROM dbo.Serial
+INSERT dbo.CTHoaDon
+(
+    MaHD,
+    ID_Serial
+)
+VALUES
+(   1, -- MaHD - varchar(20)
+    2  -- ID_Serial - int
+    ),
+	(2,3),
+	(2,4);
+
+
+	--
+	
+
