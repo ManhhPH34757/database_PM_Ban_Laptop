@@ -64,18 +64,18 @@ GO
 
 -- Continue with the rest of the tables...
 -- Insert into RAM
-INSERT INTO RAM(MaRAM, LoaiRAM, DungLuong, TocDoRAM, SoKheCamRoi, SoKheRAMConLai, SoRAMOnboard, HoTroRAMToiDa)
+INSERT INTO RAM(MaRAM, LoaiRAM, DungLuong, TocDoRAM)
 VALUES
-('MR01', 'DDR4', 8, 2400, 2, 1, 0, 16),
-('MR02', 'DDR4', 16, 2400, 2, 0, 0, 16),
-('MR03', 'DDR4', 8, 2666, 2, 1, 0, 16),
-('MR04', 'DDR4', 16, 2666, 2, 0, 0, 16),
-('MR05', 'DDR4', 32, 2666, 2, 0, 0, 32),
-('MR06', 'DDR4', 8, 3200, 2, 1, 0, 16),
-('MR07', 'DDR4', 16, 3200, 2, 0, 0, 16),
-('MR08', 'DDR4', 32, 3200, 2, 0, 0, 32),
-('MR09', 'DDR4', 64, 3200, 4, 0, 0, 64),
-('MR10', 'DDR4', 128, 3200, 4, 0, 0, 128);
+('MR01', 'DDR4', 8, 2400),
+('MR02', 'DDR4', 16, 2400),
+('MR03', 'DDR4', 8, 2666),
+('MR04', 'DDR4', 16, 2666),
+('MR05', 'DDR4', 32, 2666),
+('MR06', 'DDR4', 8, 3200),
+('MR07', 'DDR4', 16, 3200),
+('MR08', 'DDR4', 32, 3200),
+('MR09', 'DDR4', 64, 3200),
+('MR10', 'DDR4', 128, 3200);
 GO
 
 -- Insert into CPU
@@ -200,6 +200,10 @@ VALUES
 (10, 'MBT10', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url');
 GO
 
+INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
+VALUES
+(1, 'MBT31', 2, 3, 4, 5, 6, 'Black', 1, 8000000000000.1234567, '3.jpg');
+
 -- Insert into BienThe
 INSERT INTO BienThe(ID_Laptop, MaBienThe, CPU, RAM, ManHinh, GPU, OCung, MauSac, HeDieuHanh, Gia, Hinh)
 VALUES
@@ -224,6 +228,7 @@ VALUES
 (10, 'MBT29', 10, 10, 10, 10, 10, 'Grey', 10, 40000000, 'image_url'),
 (10, 'MBT30', 1, 1, 1, 1, 1, 'Black', 1, 8000000, 'image_url');
 GO
+UPDATE dbo.BienThe SET Hinh = '3.jpg'
 
 -- Insert into Serial
 INSERT INTO Serial(ID_BienThe, SerialNumber, TrangThai)
@@ -254,11 +259,45 @@ VALUES
 (20, 'SN31',1);
 GO
 
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC01', N'Công ty TNHH 1 thành viên', N'Nguyễn Văn A', '0123456789', 'nva@gmail.com', N'Hà Nội');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC02', N'Công ty TNHH 2 thành viên', N'Nguyễn Văn B', '0123456780', 'nvb@gmail.com', N'TP Hồ Chí Minh');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC03', N'Công ty TNHH MTV', N'Nguyễn Văn C', '0123456708', 'nvc@gmail.com', N'Đà Nẵng');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC04', N'Công ty TNHH', N'Nguyễn Văn D', '0123456078', 'nvd@gmail.com', N'Hải Phòng');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC05', N'Công ty CP', N'Nguyễn Văn E', '0123450786', 'nve@gmail.com', N'Cần Thơ');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC06', N'Công ty TNHH 3 thành viên', N'Nguyễn Văn F', '0123407865', 'nvf@gmail.com', N'Nghệ An');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC07', N'Công ty TNHH 4 thành viên', N'Nguyễn Văn G', '0123078654', 'nvg@gmail.com', N'Hà Tĩnh');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC08', N'Công ty TNHH 5 thành viên', N'Nguyễn Văn H', '0120786543', 'nvh@gmail.com', N'Quảng Bình');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC09', N'Công ty TNHH 6 thành viên', N'Nguyễn Văn I', '0107865432', 'nvi@gmail.com', N'Quảng Trị');
+
+INSERT INTO NhaCungCap(MaNCC, TenNCC, NguoiPhuTrach, SoDienThoai, Email, DiaChi) 
+VALUES ('NCC10', N'Công ty TNHH 7 thành viên', N'Nguyễn Văn J', '1078654321', 'nvj@gmail.com', N'Thừa Thiên Huế');
+
+
+
+-- insert HoaDonNhap
 
 
 --Insert NhanVien
 
-INSERT INTO dbo.NhanVien
+
+	INSERT INTO dbo.NhanVien
 (
     MaNV,
     HoTen,
@@ -270,7 +309,7 @@ INSERT INTO dbo.NhanVien
     DiaChi
 )
 VALUES
-(   'NV002',        -- MaNV - varchar(20)
+(  'NV001',        -- MaNV - varchar(20)
     N'Nguyễn Thị Hương Giang',       -- HoTen - nvarchar(50)
     '0369584462',        -- SoDienThoai - varchar(13)
     '2004-08-08', -- NgaySinh - date
@@ -278,10 +317,15 @@ VALUES
     'giangchan08082004@gmail.com',        -- Email - varchar(100)
     'arr.pgn',        -- Hinh - varchar(255)
     N'Di Trạch'        -- DiaChi - nvarchar(255)
-    );
+    ),
+	('NV002',N'Nguyễn Ngọc Mạnh','08383992922','2004-07-27',1,'manhnn27072004@gmail.com','aggg.png',N'Di Trạch'),
+	('NV003',N'Lương Duy Khải','0369584462','2004-08-28',1, 'khai28082004@gmail.com','arr.pgn',N'Di Trạch'),
+	('NV004',N'Trần Thị Mỹ Duyên','037828222','2004-02-11',0,'duyenttm1102@gmail.com','ggg.png',N'Đan Khê'),
+	('NV005',N'Hồ Chí Nhật Ninh','082822222','2004-01-30',1,'ninhhcn3001@gmail.com','ggg.png',N'Di Trạch'),
+	('NV006',N'Nguyễn Hữu Đồng','099282828','2004-01-01',1,'dongnh@gmail.com','thh.png',N'Đan Khê');
 
 	--Insert TaiKhoan
-	SELECT * FROM dbo.TaiKhoan
+	
 INSERT dbo.TaiKhoan
 (
     MaNV,
@@ -291,14 +335,21 @@ INSERT dbo.TaiKhoan
 )
 VALUES
 (   'NV001',  -- MaNV - varchar(20)
-    'khai123',  -- TenDangNhap - varchar(100)
+    'giang',  -- TenDangNhap - varchar(100)
     'giang123',  -- MatKhau - varchar(100)
     0 -- VaiTro - bit
     ),
-	('NV002','giangchan','giang123',1);
+	('NV002','manhnn','giang123',1),
+	('NV003','khai123','giang123',0),
+	('NV004','duyentran','giang123',0),
+	('NV005','ninhhcn','giang123',0),
+	('NV006','huudong','giang123',0);
+
+
 
 
 	--Insert PHieuGG
+	
 	INSERT INTO dbo.PhieuGiamGia
 (
     MaPG,
@@ -319,7 +370,28 @@ VALUES
 	('PGG002','Giảm 5% cho đơn từ 15000000','2023-12-10',30,750000,15000000);
 
 
+	--insert DotGiamGia
+
+
+	INSERT dbo.DotGiamGia
+	(
+	    MaDG,
+	    TenDG,
+	    Han,
+	    GiaGiam,
+	    DieuKienHoaDon
+	)
+	VALUES
+	(   'DGG001',        -- MaDG - varchar(20)
+	    N'Chào Mừng Tân Sinh Viên',       -- TenDG - nvarchar(50)
+	    '2023-12-12', -- Han - datetime
+	    2000000,      -- GiaGiam - decimal(38, 20)
+	    20000000       -- DieuKienHoaDon - decimal(38, 20)
+	    ),
+		('DGG002',N'Chào Mừng Năm Mới','2024-02-01',1000000,15000000);
+
 	--Insert KhachHang
+	
 	INSERT INTO dbo.KhachHang
 (
     MaKH,
@@ -345,23 +417,21 @@ VALUES
 
 
 	--
-	SELECT * FROM dbo.Serial JOIN dbo.BienThe ON BienThe.ID = Serial.ID_BienThe
 
 	--HinhThucVanChuyen
-	INSERT dbo.HinhThucVanChuyen
+
+INSERT dbo.HinhThucVanChuyen
 (
     HinhThuc,
     DonVi,
     GiaVC
 )
 VALUES
-(   N'Giao Hàng Nhanh', -- HinhThuc - nvarchar(30)
+(    N'Giao Hàng Nhanh', -- HinhThuc - nvarchar(30)
     N'Ninja', -- DonVi - nvarchar(30)
-    30000  -- GiaVC - float
+    30000 -- GiaVC - decimal(38, 20)
     ),
 	(N'Giao Hàng Tiết Kiệm',N'Giao Hàng Tiết Kiệm',20000);
-
-
 
 	--Insert HinhThucThanhToan
 	INSERT dbo.HinhThucThanhToan
@@ -373,39 +443,37 @@ VALUES
     ),(N'Thanh Toán Chuyển Khoản');
 
 	-- insert Hoa Don
-	SELECT dbo.HoaDon.MaHD FROM dbo.HoaDon
-SELECT * FROM dbo.HoaDon
-INSERT dbo.HoaDon
-(
-    MaHD,
-    MaKH,
-    HinhThucVanChuyen,
-    HinhThucThanhToan,
-    PhieuGiamGia,
-    DotGiamGia,
-    MaNV,
-    NgayTao,
-    TongTien
-)
-VALUES
-(   'HD001',        -- MaHD - varchar(20)
-    'KH001',        -- MaKH - varchar(20)
-    1,         -- HinhThucVanChuyen - int
-    1,         -- HinhThucThanhToan - int
-    NULL,        -- PhieuGiamGia - varchar(20)
-    NULL,        -- DotGiamGia - varchar(20)
-    'NV002',        -- MaNV - varchar(20)
-    GETDATE(), -- NgayTao - date
-    580000        -- TongTien - float
-    ),
-	('HD002','KH002',2,1,NULL,NULL,'NV001',GETDATE(),1450000);
 
 
 
+	INSERT dbo.HoaDon
+	(
+	    MaHD,
+	    MaKH,
+	    HinhThucVanChuyen,
+	    HinhThucThanhToan,
+	    PhieuGiamGia,
+	    DotGiamGia,
+	    MaNV,
+	    NgayTao,
+	    TongTien
+	)
+	VALUES
+	(   'HD001',        -- MaHD - varchar(20)
+	    'KH001',        -- MaKH - varchar(20)
+	    1,         -- HinhThucVanChuyen - int
+	    1,         -- HinhThucThanhToan - int
+	    NULL,         -- PhieuGiamGia - int
+	    NULL,        -- DotGiamGia - varchar(20)
+	    'NV002',        -- MaNV - varchar(20)
+	    GETDATE(), -- NgayTao - datetime
+	   8000000       -- TongTien - decimal(38, 20)
+	    ),
+		('HD002','KH002',2,1,NULL,NULL,'NV001',GETDATE(),28000000);
 
 	--Insert ChiTietHoaDon
-	SELECT * FROM dbo.CTHoaDon
-SELECT * FROM dbo.Serial
+	
+
 INSERT dbo.CTHoaDon
 (
     MaHD,
@@ -415,12 +483,10 @@ VALUES
 (   1, -- MaHD - varchar(20)
     2  -- ID_Serial - int
     ),
-	(2,3),
-	(2,4);
-
+	(2,4),
+	(2,12);
 
 	--
-	
 
 -- insert PhieuDoi
 
@@ -439,7 +505,7 @@ VALUES
     1,         -- MaHD - int
     'NV002',        -- MaNV - varchar(20)
     GETDATE(), -- NgayTao - date
-    N'aa'        -- LiDo - nvarchar(255)
+    N'Đen Màn Hình'        -- LiDo - nvarchar(255)
     )
 
 
@@ -453,7 +519,36 @@ INSERT INTO dbo.CTPhieuDoi
 )
 VALUES
 (   1, -- ID_PhieuDoi - int
-    1, -- ID_Serial_Old - int
-    2  -- ID_Serial_New - int
+    2, -- ID_Serial_Old - int
+    3  -- ID_Serial_New - int
     )
 
+-- insert LS_HoaDon
+INSERT dbo.LS_HoaDon
+(
+    MaNV,
+    MaHoaDon,
+    LichSuLamViec
+)
+VALUES
+(   'NV002', -- MaNV - varchar(20)
+    1,  -- MaHoaDon - int
+    N'Tạo hóa đơn mới' -- LichSuLamViec - nvarchar(100)
+    );
+
+
+	--insert LS_PhieuDoi
+INSERT dbo.LS_PhieuDoi
+(
+    MaNV,
+    PhieuDoi,
+    LichSuLamViec
+)
+VALUES
+(   'NV002', -- MaNV - varchar(20)
+    '1',  -- PhieuDoi - int
+    N'Tạo phiếu đổi mới' -- LichSuLamViec - nvarchar(100)
+    );
+
+
+	

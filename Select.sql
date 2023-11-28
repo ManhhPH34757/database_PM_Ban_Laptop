@@ -13,8 +13,15 @@ SELECT * FROM dbo.Laptop
 SELECT * FROM dbo.MoTa
 SELECT * FROM dbo.BienThe
 
+SELECT * 
+	FROM  dbo.Laptop JOIN dbo.BienThe ON BienThe.ID_Laptop = Laptop.ID
+		JOIN dbo.Serial ON Serial.ID_BienThe = BienThe.ID
+	WHERE SerialNumber = 'SN03' 
 
 
+
+	SELECT * FROM dbo.BienThe
+SELECT * FROM dbo.CTHoadon
 -- select hoadon
 
 SELECT dbo.HoaDon.ID AS 'ID_HoaDon', dbo.HoaDon.MaHD ,dbo.Serial.ID AS 'ID_Serial', dbo.Serial.SerialNumber 
